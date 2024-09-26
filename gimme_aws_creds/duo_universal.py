@@ -181,7 +181,8 @@ class OktaDuoUniversal:
 
     @staticmethod
     def _find_device_to_use(doc):
-        device = doc.find('.//input[@name="preferred_device"]').get('value')
+        preferred_device_block = doc.find('.//input[@name="preferred_device"]')
+        device = preferred_device_block.get('value') if preferred_device_block is not None else None
         if device is None or device == '':
             device = doc.find('.//select[@name="device"]/option').get('value')
         return device

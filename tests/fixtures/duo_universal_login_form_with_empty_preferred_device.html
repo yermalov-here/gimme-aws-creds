@@ -50,6 +50,9 @@
                     <input type="hidden" name="should_update_dm" value="False">
 
 
+                    <input type="hidden" name="preferred_factor" value="">
+                    <input type="hidden" name="preferred_device" value="">
+
                     <input type="hidden" name="days_to_block" value="None">
                     <input type="hidden" name="should_retry_u2f_timeouts" value="True">
 
@@ -64,7 +67,13 @@
                             <select name="device" aria-label="Device" tabindex=2>
 
 
-                                <option value="token">Token</option>
+                                <option value="phone1">Phone 1 &#x28;XXX-XXX-1111&#x29;</option>
+
+
+                                <option value="phone2">Phone 2 &#x28;XXX-XXX-2222&#x29;</option>
+
+
+                                <option value="phone3">Phone 3 &#x28;XXX-XXX-3333&#x29;</option>
 
 
                             </select>
@@ -74,20 +83,175 @@
 
                     <div id="auth_methods">
 
-                        <fieldset data-device-index="token" class="hidden">
-                        <div class="passcode-label row-label">
-                            <input type="hidden" name="factor" value="Passcode">
-                            <input type="hidden" name="has-token" value="true">
-                            <span class="label factor-label">
- <i class="icon-smartphone-ellipsis" alt="" role="presentation"></i>
- Enter a Passcode
- </span>
-                            <div class="passcode-input-wrapper">
-                                <input type="text" name="passcode" class="hidden" autocomplete="off" placeholder="&#x28;ex.&#x20;123456&#x29;" tabindex=2>
-                                </div>
-                            <button tabindex="2" type="submit" id="passcode" class="positive&#x20;auth-button" ><!-- -->Enter a Passcode </button>
+                        <fieldset data-device-index="phone1" class="hidden">
+                            <h2 class="medium-or-larger auth-method-header">
+                                Choose an authentication method
+                            </h2>
+
+
+                            <div class="row-label push-label">
+                                <input type="hidden" name="factor" value="Duo&#x20;Push">
+                                <span class="label factor-label">
+        <i class="icon-smartphone-check"></i>
+        Duo Push
+
+
+        <small class="used-automatically">
+        <i class="icon-check"></i>
+        Used automatically
+        </small>
+
+
+        </span>
+                                <button tabindex="2" type="submit" class="positive&#x20;auth-button"><!-- -->Send Me a
+                                    Push
+                                </button>
                             </div>
+
+
+                            <div class="row-label phone-label">
+                                <input type="hidden" name="factor" value="Phone&#x20;Call">
+                                <span class="label factor-label">
+        <i class="icon-call-ringing" alt="" role="presentation"></i>
+        Call Me
+
+        </span>
+                                <button tabindex="2" type="submit" class="positive&#x20;auth-button"><!-- -->Call Me
+                                </button>
+                            </div>
+
+                            <div class="passcode-label row-label">
+                                <input type="hidden" name="factor" value="Passcode">
+                                <span class="label factor-label">
+        <i class="icon-smartphone-ellipsis" alt="" role="presentation"></i>
+        Passcode
+        </span>
+                                <div class="passcode-input-wrapper">
+                                    <input type="text" name="passcode" autocomplete="off" data-index="phone1"
+                                           class="hidden passcode-input" placeholder="ex.&#x20;867539"
+                                           aria-label="passcode" tabindex=2>
+                                    <div class="next-passcode-msg" role="alert" aria-live="polite"></div>
+                                </div>
+                                <button tabindex="2" type="submit" id="passcode" class="positive&#x20;auth-button">
+                                    <!-- -->Enter a Passcode
+                                </button>
+                                <input name="phone-smsable" type="hidden" value="True"/>
+                                <input name="mobile-otpable" type="hidden" value="True"/>
+                                <input name="next-passcode" type="hidden" value="None"/>
+                            </div>
+
                         </fieldset>
+
+                        <fieldset data-device-index="phone2" class="hidden">
+                            <h2 class="medium-or-larger auth-method-header">
+                                Choose an authentication method
+                            </h2>
+
+
+                            <div class="row-label push-label">
+                                <input type="hidden" name="factor" value="Duo&#x20;Push">
+                                <span class="label factor-label">
+        <i class="icon-smartphone-check"></i>
+        Duo Push
+
+
+
+        </span>
+                                <button tabindex="2" type="submit" class="positive&#x20;auth-button"><!-- -->Send Me a
+                                    Push
+                                </button>
+                            </div>
+
+
+                            <div class="row-label phone-label">
+                                <input type="hidden" name="factor" value="Phone&#x20;Call">
+                                <span class="label factor-label">
+        <i class="icon-call-ringing" alt="" role="presentation"></i>
+        Call Me
+
+        </span>
+                                <button tabindex="2" type="submit" class="positive&#x20;auth-button"><!-- -->Call Me
+                                </button>
+                            </div>
+
+                            <div class="passcode-label row-label">
+                                <input type="hidden" name="factor" value="Passcode">
+                                <span class="label factor-label">
+        <i class="icon-smartphone-ellipsis" alt="" role="presentation"></i>
+        Passcode
+        </span>
+                                <div class="passcode-input-wrapper">
+                                    <input type="text" name="passcode" autocomplete="off" data-index="phone2"
+                                           class="hidden passcode-input" placeholder="ex.&#x20;867539"
+                                           aria-label="passcode" tabindex=2>
+                                    <div class="next-passcode-msg" role="alert" aria-live="polite"></div>
+                                </div>
+                                <button tabindex="2" type="submit" id="passcode" class="positive&#x20;auth-button">
+                                    <!-- -->Enter a Passcode
+                                </button>
+                                <input name="phone-smsable" type="hidden" value="True"/>
+                                <input name="mobile-otpable" type="hidden" value="True"/>
+                                <input name="next-passcode" type="hidden" value="None"/>
+                            </div>
+
+                        </fieldset>
+
+                        <fieldset data-device-index="phone3" class="hidden">
+                            <h2 class="medium-or-larger auth-method-header">
+                                Choose an authentication method
+                            </h2>
+
+
+                            <div class="row-label push-label">
+                                <input type="hidden" name="factor" value="Duo&#x20;Push">
+                                <span class="label factor-label">
+        <i class="icon-smartphone-check"></i>
+        Duo Push
+
+
+
+        </span>
+                                <button tabindex="2" type="submit" class="positive&#x20;auth-button"><!-- -->Send Me a
+                                    Push
+                                </button>
+                            </div>
+
+
+                            <div class="row-label phone-label">
+                                <input type="hidden" name="factor" value="Phone&#x20;Call">
+                                <span class="label factor-label">
+        <i class="icon-call-ringing" alt="" role="presentation"></i>
+        Call Me
+
+        </span>
+                                <button tabindex="2" type="submit" class="positive&#x20;auth-button"><!-- -->Call Me
+                                </button>
+                            </div>
+
+                            <div class="passcode-label row-label">
+                                <input type="hidden" name="factor" value="Passcode">
+                                <span class="label factor-label">
+        <i class="icon-smartphone-ellipsis" alt="" role="presentation"></i>
+        Passcode
+        </span>
+                                <div class="passcode-input-wrapper">
+                                    <input type="text" name="passcode" autocomplete="off" data-index="phone3"
+                                           class="hidden passcode-input" placeholder="ex.&#x20;867539"
+                                           aria-label="passcode" tabindex=2>
+                                    <div class="next-passcode-msg" role="alert" aria-live="polite"></div>
+                                </div>
+                                <button tabindex="2" type="submit" id="passcode" class="positive&#x20;auth-button">
+                                    <!-- -->Enter a Passcode
+                                </button>
+                                <input name="phone-smsable" type="hidden" value="True"/>
+                                <input name="mobile-otpable" type="hidden" value="True"/>
+                                <input name="next-passcode" type="hidden" value="None"/>
+                            </div>
+
+                        </fieldset>
+
+
+                        <input type="hidden" name="has-token" value="false">
 
 
                     </div>

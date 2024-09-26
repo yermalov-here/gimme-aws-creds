@@ -187,7 +187,21 @@ class TestDuoUniversalClient(unittest.TestCase):
             },
         }
 
-    def test_no_preferred_device(self):
+    def test_empty_preferred_device(self):
+        session = requests.Session()
+        login_form_response = Mock()
+        login_form_response.content = read_fixture('duo_universal_login_form_with_empty_preferred_device.html')
+        duo = OktaDuoUniversal(ui=MockUserInterface(),
+                               session=session,
+                               state_token=self.OKTA_STATE_TOKEN,
+                               okta_factor=self.OKTA_FACTOR,
+                               remember_device=True,
+                               duo_factor='Passcode',
+                               duo_passcode='12345')
+        form_action, form_data = duo._get_duo_universal_login_form_data(login_form_response)
+        assert form_data['device'] == 'phone1'
+
+    def test_without_preferred_device(self):
         session = requests.Session()
         login_form_response = Mock()
         login_form_response.content = read_fixture('duo_universal_login_form_without_preferred_device.html')
@@ -199,7 +213,7 @@ class TestDuoUniversalClient(unittest.TestCase):
                                duo_factor='Passcode',
                                duo_passcode='12345')
         form_action, form_data = duo._get_duo_universal_login_form_data(login_form_response)
-        assert form_data['device'] == 'phone1'
+        assert form_data['device'] == 'token'
 
     def configure_duo_responses(self, duo_factor, passcode=None):
         # Initial request to Okta to verify IDP factor
